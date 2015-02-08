@@ -11,6 +11,7 @@ http://stackoverflow.com/questions/14158868
         4: 7.872um          4: 4.1''
 
 MAXFLAG: meaning of additive values
+
         0 perfect source               16 incomplete aperture data
         1 bright/close neighbors       32 incomplete isophotal data
         2 blended/overlapping          64 deblending caused mem overflow
