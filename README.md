@@ -1,4 +1,4 @@
-[Description of Data](http://irsa.ipac.caltech.edu/data/COSMOS/gator_docs/scosmos_irac_colDescriptions.html)
+[Description of Data](http://irsa.ipac.caltech.edu/data/COSMOS/gator_docs/scosmos_irac_colDescriptions.html)  
 [Fix header issues by ignoring comments](http://stackoverflow.com/questions/14158868)
 
     Channels            Apertures
@@ -14,7 +14,7 @@
         4 pixels saturated             128 extraction caused mem overflow
         8 image boundary object
 
-Usage
+###Usage
 
     from cosmoscatalog import Cosmos
     
@@ -29,4 +29,4 @@ Usage
     cos.color(r=3, g=2, b=1)            # channels for red/green/blue
 
 
-I should integrate the plotting stuff in graphing.ipynb into Cosmos.color(), but for now it's in testing in the ipython notebook. See http://nbviewer.ipython.org/github/ehacinom/work18-cosmos/blob/master/graphing.ipynb
+I should integrate the plotting stuff in graphing.ipynb into Cosmos.color(), but for now it's [in testing in the ipython notebook](http://nbviewer.ipython.org/github/ehacinom/work18-cosmos/blob/master/graphing.ipynb)
