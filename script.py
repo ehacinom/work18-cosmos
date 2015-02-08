@@ -9,8 +9,11 @@ cos.process()
 rgb = cos.color()
 
 import numpy as np
+import matplotlib
+matplotlib.use('Qt4Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 
 sns.set(style='white', palette='muted')
 
