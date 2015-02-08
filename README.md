@@ -24,7 +24,6 @@ Working with the S-COSMOS dataset.
     USAGE
 
 
-
     from cosmoscatalog import Cosmos
     
     fp = '/Volumes/ESSENTIA/cosmos.csv'
@@ -36,3 +35,6 @@ Working with the S-COSMOS dataset.
     cos = Cosmos(fp, HEADER, MINFLUX, MAXFLAG)
     cos.process()                       # applying constraints to data
     cos.color(r=3, g=2, b=1)            # channels for red/green/blue
+
+
+I should integrate the plotting stuff in graphing.ipynb into Cosmos.color(), but for now it's in testing in the ipython notebook. See http://nbviewer.ipython.org/github/ehacinom/work18-cosmos/blob/master/graphing.ipynb
