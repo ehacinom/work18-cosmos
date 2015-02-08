@@ -193,7 +193,7 @@ class Cosmos():
         r/g := f(b/g)
         
         Eq. Let aperture a.
-        rgb = [x, y, xerr, yerr]
+        rgb[a-1] = [x, y, xerr, yerr]
         x = blue(a)/green(a)
         y = red(a)/green(a)
         xerr = x * Sqrt[ (db(a)/blue(a))^2 + (dg(a)/green(a))^2 ] 
@@ -205,6 +205,9 @@ class Cosmos():
         db(a)    = data[:, eAC[a-1][b-1]]
         dr(a)    = data[:, eAC[a-1][r-1]]
         dg(a)    = data[:, eAC[a-1][g-1]]
+
+        Returns
+        rgb[a-1] = [x, y, xerr, yerr]
 
         '''
         # these are indicies for flux and error as function of a and c.
