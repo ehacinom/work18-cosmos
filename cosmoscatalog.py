@@ -15,9 +15,6 @@ class Cosmos():
     Description of Data:
     http://irsa.ipac.caltech.edu/data/COSMOS/gator_docs/scosmos_irac_colDescriptions.html
     
-    Fix header issues by ignoring comments:
-    http://stackoverflow.com/questions/14158868
-    
     Channels            Apertures
         1: 3.550um          1: 1.4''
         2: 4.493um          2: 1.9''            
@@ -60,7 +57,6 @@ class Cosmos():
         self.file = os.path.basename(fp)
         self.fileext = os.path.splitext(self.file)[1]
         self.filesize = os.path.getsize(fp)
-        self.HEADER = HEADER
         print(self.file, 'is a', self.fileext, 'file of', 
               self.filesize, 'bytes.')
 
@@ -112,6 +108,14 @@ class Cosmos():
                                  [0.490,0.625,0.840,0.940],
                                  [0.450,0.580,0.730,0.910]])
 
+        # create play file without header
+        if HEADER > 0:
+            newfp = self.fp[:-4] + 'NOHEADER' + self.fileext
+            shutil.copyfile(self.fp, newfp)
+            self.fp = newfp
+            delstmt = '1,%i d' % int(HEADER)
+            sub = subprocess.call(['sed', '-i', '', delstmt, self.fp])
+
     def _csvgen(self, constraints):
         '''Applies constraints and returns a generator of good data.
 
@@ -120,13 +124,6 @@ class Cosmos():
         http://stackoverflow.com/questions/17444679
         http://stackoverflow.com/questions/14158868
         '''
-        # create play file without header
-        if self.HEADER:
-            newfp = self.fp[:-4] + 'NOHEADER' + self.fileext
-            shutil.copyfile(self.fp, newfp)
-            self.fp = newfp
-            delstmt = '1,%i d' % int(HEADER)
-            sub = subprocess.call(['sed', '-i', '', delstmt, self.fp])
 
         # apply constraints and return generator
         with open(self.fp, 'rb') as f:
@@ -232,9 +229,10 @@ class Cosmos():
                                              / self.data[:, fAC[a][g-1]],2))
             rgb.append([x, y, xerr, yerr])
 
+        # attach to self
         self.rgb = numpy.array(rgb)
         
-        
+        # plot using seaborn+pandas? see ipython notebook
         
         return self.rgb
         
